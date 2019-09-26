@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymelaf.org">
+<head>
+    <title> Change Data Menu </title>
+</head>
+</head>
+<body>
+
+<h2> Change Data Restoran</h2>
+<form th:action="@{/menu/change/{id}(id=${menu.id})/{idRestoran}(idRestoran=${restoran.idRestoran})}" th:object="${menu}" method="POST">
+    <input type="hidden" th:field="${restoran.idRestoran}" />
+    Nama Restoran: <br>
+    <input type="text" name="nama" th:value="${menu.nama}" />
+    <br>
+    Alamat: <br>
+    <input type="text" name="durasiMasak" th:value="${menu.durasiMasak}" />
+    <br>
+    Nomor Telepon: <br>
+    <input type="text" name="deskripsi" th:value="${menu.deskripsi}" />
+    <br>
+    Harga: <br>
+    <input type="number" name="harga" th:value="${menu.harga}" />
+    <br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
