@@ -25,6 +25,10 @@ public class RestoranInMemoryService implements RestoranService {
     }
 
     @Override
+    public void deleteRestoranById(Long idRestoran) {
+    }
+
+    @Override
     public RestoranModel changeRestoran(RestoranModel restoranModel) {
         return null;
     }

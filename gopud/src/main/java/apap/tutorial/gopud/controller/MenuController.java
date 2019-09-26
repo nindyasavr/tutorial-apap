@@ -43,26 +43,28 @@ public class MenuController {
         return "add-menu";
     }
 
-//    @RequestMapping(value = "/menu/change/{id}/{idRestoran}", method = RequestMethod.GET)
-//    public String changeMenuFormPage(@PathVariable Long id, Long idRestoran, Model model) {
-//        List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(idRestoran);
-//        MenuModel changedMenu = null;
-//        for (MenuModel each : menuList) {
-//            if (each.getId() == id ) {
-//                changedMenu = each;
-//            }
-//        }
-//        model.addAttribute("menu", changedMenu);
-//        return "form-change-menu";
-//    }
-//
-//    @RequestMapping(value = "/menu/change/{id}/{idRestoran}", method = RequestMethod.POST)
-//    public String changeMenuFormPage(@PathVariable Long id, Long idRestoran, @ModelAttribute MenuModel menu, Model model) {
-//        List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(idRestoran);
-//        MenuModel newMenu = menuService.changeMenu(menu);
-//        model.addAttribute("menu", newMenu);
-//        return "change-menu";
-//    }
+    @RequestMapping(value = "menu/delete/{id}", method = RequestMethod.GET)
+    private String deleteMenu(
+            @PathVariable(value = "id") Long id, Model model) {
+        MenuModel targetedMenu = menuService.findMenuById(id).get();
+        menuService.deleteMenuById(targetedMenu);
+//        listMenu.remove(targetedMenu);
+        return "delete-menu";
+    }
+
+    @RequestMapping(value = "/menu/change/{id}", method = RequestMethod.GET)
+    public String changeMenuFormPage(@PathVariable(value = "id") Long id, Model model) {
+        MenuModel existMenu = menuService.findMenuById(id).get();
+        model.addAttribute("menu", existMenu);
+        return "form-change-menu";
+    }
+
+    @RequestMapping(value = "/menu/change/{id}", method = RequestMethod.POST)
+    public String changeMenuFormPage(@PathVariable(value = "id") Long id, @ModelAttribute MenuModel menu, Model model) {
+        MenuModel newMenu = menuService.changeMenu(menu);
+        model.addAttribute("menu", newMenu);
+        return "change-menu";
+    }
 
 
 

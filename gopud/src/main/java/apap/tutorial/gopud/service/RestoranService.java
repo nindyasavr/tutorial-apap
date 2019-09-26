@@ -10,6 +10,7 @@ public interface RestoranService {
 
     //Method untuk mendapatkan semua data Restoran yang tersimpan
     List<RestoranModel> getRestoranList();
+    void deleteRestoranById(Long idRestoran);
 
     //Method untuk mendapatkan data sebuah Restoran berdasarkan idRestoran
     Optional<RestoranModel> getRestoranByIdRestoran(Long idRestoran);

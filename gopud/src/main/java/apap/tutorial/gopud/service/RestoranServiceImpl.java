@@ -40,9 +40,16 @@ public class RestoranServiceImpl implements RestoranService{
             targetRestoran.setAlamat(restoranModel.getAlamat());
             targetRestoran.setNomorTelepon(restoranModel.getNomorTelepon());
             restoranDb.save(targetRestoran);
+            return targetRestoran;
         } catch (NullPointerException nullException) {
             return null;
         }
-        return null;
     }
+
+    @Override
+    public void deleteRestoranById(Long idRestoran) {
+        restoranDb.deleteById(idRestoran);
+    }
+
+
 }

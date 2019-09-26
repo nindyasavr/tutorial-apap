@@ -49,8 +49,11 @@ public class RestoranController {
             // Request parameter untuk dipoass
             @RequestParam(value = "idRestoran") Long idRestoran, Model model
     ) {
-        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
 
+        if (restoranService.getRestoranByIdRestoran(idRestoran).isEmpty()){
+            return "error-message";
+        }
+        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
         //Add model restoran ke "resto untuk dirender
         model.addAttribute("resto", restoran);
 
@@ -84,6 +87,20 @@ public class RestoranController {
         listResto.sort(Comparator.comparing(RestoranModel::getNama));
         model.addAttribute("restoList", listResto);
         return "viewall-restoran";
+    }
+
+    @RequestMapping(value = "restoran/delete/{idRestoran}", method = RequestMethod.GET)
+    public String deleteResto(@PathVariable(value = "idRestoran") Long idRestoran, Model model) {
+        if (restoranService.getRestoranByIdRestoran(idRestoran).isEmpty()){
+            return "error-message";
+        }
+        RestoranModel deleteResto = restoranService.getRestoranByIdRestoran(idRestoran).get();
+        if (deleteResto.getListMenu().size() == 0) {
+            restoranService.deleteRestoranById(idRestoran);
+            model.addAttribute("resto", deleteResto);
+            return "delete-restoran";
+        }
+        return "error-message";
     }
 
 
