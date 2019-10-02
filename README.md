@@ -82,3 +82,30 @@ juga bukti screenshotmu.
 pada link tersebut terdapat list restoran yang telah ditambahkan beserta informasi id, nama, alamat dan nomor telepon masing-masing restoran
 bukti screenshot : https://ibb.co/XjX2rqp
 
+------------------------------------------------------------------------------
+## **Tutorial 3**
+1. Pada class MenuDb, terdapat method findByRestoranIdRestoran, apakah kegunaan dari
+method tersebut?
+method tersebut mengambil data restoran dari database dengan mempermudah melakukan query tanpa harus membuat query terlebih dahulu
+
+2. Pada class RestoranController, jelaskan perbedaan method addRestoranFormPage dan
+addRestoranSubmit?
+addRestoranFormPage merupakan method yang akan menampilkan form untuk informasi restoran tersebut
+addRestoranSubmit merupakan method yang digunakan untuk mendapat value yang sebelumnya telah diisi di form dan menyimpannya di database
+
+3. Jelaskan apa kegunaan dari JPA Repository?
+JPA Repository digunakan sebagai perantara database tempat untuk menyimpan data-data yang akan mempermudah dalam pengaksesan database tanpa harus membuat syntax query sql terlebih dahulu
+
+4. Sebutkan dan jelaskan di bagian kode mana sebuah relasi antara RestoranModel dan
+MenuModel dibuat?
+relasi keduanya terdapat pada :
+@ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "restoranId", referencedColumnName = "idRestoran", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+
+kode diatas menandakan bahwa MenuModel akan melakukan referenced ke RestoranModel dengan memanfaatkan id restoran sebagai column referencenya
+
+5. Jelaskan kegunaan FetchType.LAZY, CascadeType.ALL, dan FetchType.EAGER
+FetchType.LAZY adalah cara mengambil data object sesuai apa yang diminta tanpa perlu memberikan data dari relasinya
+CascadeType.ALL menandakan semua object yang saling berelasi akan saling berhubungan jadi ketika satu object dihapus maka semua relasinya juga akan terhapus
+FetchType.EAGER adalah cara mengambil data object semua data beserta tabel yang berelasi dengannya.

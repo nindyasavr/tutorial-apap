@@ -5,11 +5,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class RestoranMemoryService implements RestoranService {
+public class RestoranInMemoryService implements RestoranService {
     private List<RestoranModel> listRestoran;
-    public RestoranMemoryService() {
+    public RestoranInMemoryService() {
         listRestoran = new ArrayList<>();
     }
 
@@ -23,14 +24,22 @@ public class RestoranMemoryService implements RestoranService {
         return listRestoran;
     }
 
+    @Override
+    public void deleteRestoranById(Long idRestoran) {
+    }
 
     @Override
-    public RestoranModel getRestoranByIdRestoran(String idRestoran) {
+    public RestoranModel changeRestoran(RestoranModel restoranModel) {
+        return null;
+    }
+
+    @Override
+    public Optional<RestoranModel> getRestoranByIdRestoran(Long idRestoran) {
         //RestoranModel theResto = null;
         for (int i = 0; i < getRestoranList().size(); i++) {
-            String id = getRestoranList().get(i).getIdRestoran();
+            Long id = getRestoranList().get(i).getIdRestoran();
             if (id.equals(idRestoran)) {
-                return getRestoranList().get(i);
+                return Optional.ofNullable(getRestoranList().get(i));
             }
         } return null;
     }

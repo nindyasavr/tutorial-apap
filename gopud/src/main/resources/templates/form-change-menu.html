@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeLeaf.org">
+<head>
+    <title> Change Data Menu </title>
+</head>
+</head>
+<body>
+
+<h2> Change Data Restoran</h2>
+    <form th:action="@{/menu/change/{id}(id=${menu.id})}" th:object="${menu}" method="POST">
+        <input type="hidden" th:field="${menu.id}" />
+        Nama: <br>
+        <input type="text" name="nama" th:value="${menu.nama}"/>
+        <br>
+        Deskripsi: <br>
+        <input type="text" name="deskripsi" th:value="${menu.deskripsi}" />
+        <br>
+        Harga: <br>
+        <input type="number" name="harga" th:value="${menu.harga}"/>
+        <br>
+        durasiMasak (menit): <br>
+        <input type="number" name="durasiMasak" th:value="${menu.durasiMasak}"/>
+        <br>
+        <input type="hidden" th:field="${menu.restoran}" />
+        <br>
+        <button type="submit"> Submit </button>
+    </form>
+</form>
+</body>
+</html>
