@@ -109,3 +109,21 @@ kode diatas menandakan bahwa MenuModel akan melakukan referenced ke RestoranMode
 FetchType.LAZY adalah cara mengambil data object sesuai apa yang diminta tanpa perlu memberikan data dari relasinya
 CascadeType.ALL menandakan semua object yang saling berelasi akan saling berhubungan jadi ketika satu object dihapus maka semua relasinya juga akan terhapus
 FetchType.EAGER adalah cara mengambil data object semua data beserta tabel yang berelasi dengannya.
+
+--------------------------------------------------------------------------------------------------------
+## Tutorial 4
+
+1. Jelaskan yang anda pelajari dari melakukan latihan nomor 2, dan jelaskan tahapan bagaimana
+anda menyelesaikan latihan nomor 2
+yang saya pelajari dari latihan 2
+Proses saya menemukan nomor 2 adalah dengan membrowsing kasus yang sama kemudian memahami bagaimana cara kerjanya dan kemudian mengimplementasikan hal tersebut ke file saya
+
+2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda
+menyelesaikan latihan nomor 3
+
+3. Jelaskan perbedaan th:include dan th:replace
+th:include adalah metode yang digunakan jika ingin menambahkan satu atau lebih object ke dalam file baru seperti menambahkan file js dan css yang banyak 
+th:replace adalah metode yang digunakan jika ingin mengubah salah satu elemen yang ada di dalam object di suatu file html. seperti contohnya saat ingin meng-include navbar ada elemen yang perlu diganti sehingga membutuhkan th:replace
+
+4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
+th:object berguna untuk menyimpan suatu object kedalam thymeleaf setelah dilakukan submit form
