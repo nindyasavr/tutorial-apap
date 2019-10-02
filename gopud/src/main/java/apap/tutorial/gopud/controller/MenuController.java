@@ -43,12 +43,12 @@ public class MenuController {
         return "add-menu";
     }
 
-    @RequestMapping(value = "menu/delete/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
     private String deleteMenu(
-            @PathVariable(value = "id") Long id, Model model) {
-        MenuModel targetedMenu = menuService.findMenuById(id).get();
-        menuService.deleteMenuById(targetedMenu);
-//        listMenu.remove(targetedMenu);
+            @ModelAttribute RestoranModel restoran, Model model) {
+        for (MenuModel menu : restoran.getListMenu()) {
+            menuService.deleteMenu(menu);
+        }
         return "delete-menu";
     }
 

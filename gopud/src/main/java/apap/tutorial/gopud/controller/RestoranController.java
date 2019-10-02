@@ -49,17 +49,14 @@ public class RestoranController {
             // Request parameter untuk dipoass
             @RequestParam(value = "idRestoran") Long idRestoran, Model model
     ) {
-
-        if (restoranService.getRestoranByIdRestoran(idRestoran).isEmpty()){
-            return "error-message";
-        }
         RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
         //Add model restoran ke "resto untuk dirender
-        model.addAttribute("resto", restoran);
 
         List<MenuModel> menuList = menuService.findAllMenuByIdRestoran(restoran.getIdRestoran());
-        model.addAttribute("menuList", menuList);
+        restoran.setListMenu(menuList);
 
+        model.addAttribute("resto", restoran);
+        model.addAttribute("listMenu", menuList);
         //Return view template
         return "view-restoran";
     }
