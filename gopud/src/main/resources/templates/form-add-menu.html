@@ -1,29 +1,105 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://thymeleaf.org">
 <head>
     <title> Add Menu </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
     <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
 </head>
 <body>
 <nav th:replace="fragments/fragment :: navbar(content='Add Menu')"></nav>
 <h3> Tambah Produk </h3>
-<form th:action="@{/menu/add}" th:object="${menu}" method="POST">
-    <input type="hidden" th:field="*{restoran}" />
-    Nama: <br>
-    <input type="text" name="nama" />
-    <br>
-    Deskripsi: <br>
-    <input type="text" name="deskripsi" />
-    <br>
-    Harga: <br>
-    <input type="number" name="harga" />
-    <br>
-    durasiMasak (menit): <br>
-    <input type="number" name="durasiMasak" />
-    <br>
-    <button type="submit"> Submit </button>
+
+
+<div class="container">
+    <form action="#" th:action="@{/menu/add}" th:object="${menu}" method="POST">
+        <input type="submit" th:value="submit">
+        <input type="hidden" th:field="*{restoran}" />
+    <table id="myTable" class="table order-list">
+        <thead>
+        <tr>
+            <th>Nama Menu</th>
+            <th>Deskripsi</th>
+            <th>Harga</th>
+            <th>Durasi Masak(Menit)</th>
+            <th>Action</th>
+            <th><input type="button" class="btn btn-lg btn-block btn-primary" id="addrow" value="Add row"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><input type="text" th:value="${menu.nama}" name="nama" /></td>
+            <td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>
+            <td><input type="number" th:value="${menu.harga}" name="harga" /></td>
+            <td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>
+            <td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>
+<!--            <td><a class="deleteRow"></a></td>-->
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr></tr>
+        <tr>
+        </tr>
+        </tfoot>
+    </table>
 </form>
+</div>
+
+<!--<table class="table table-striped" id="myTable">-->
+<!--<tr th:each="menu, iterationStatus : *{listMenu}">-->
+<!--    <td><input type="hidden" th:field="*{listMenu[_${iterationStatus.index}_].restoran}" /></td>-->
+<!--    <td><input th:field="*{listMenu[_${iterationStatus.index}_].nama}"></td>-->
+<!--    <td><input th:field="*{listMenu[_${iterationStatus.index}_].deskripsi}"></td>-->
+<!--    <td><input th:field="*{listMenu[_${iterationStatus.index}_].harga}"></td>-->
+<!--    <td><input th:field="*{listMenu[_${iterationStatus.index}_].durasiMasak}"></td>-->
+<!--</tr>-->
+
+<!--<form th:action="@{/menu/add}" th:object="${menu}" method="POST">-->
+<!--    <input type="hidden" th:field="*{restoran}" />-->
+<!--    Nama: <br>-->
+<!--    <input type="text" name="nama" />-->
+<!--    <br>-->
+<!--    Deskripsi: <br>-->
+<!--    <input type="text" name="deskripsi" />-->
+<!--    <br>-->
+<!--    Harga: <br>-->
+<!--    <input type="number" name="harga" />-->
+<!--    <br>-->
+<!--    durasiMasak (menit): <br>-->
+<!--    <input type="number" name="durasiMasak" />-->
+<!--    <br>-->
+<!--    <button type="submit"> Submit </button>-->
+<!--</form>-->
 </body>
+<script>
+$(document).ready(function () {
+var counter = 0;
+
+$("#addrow").on("click", function () {
+var newRow = $("<tr>");
+    var cols = "";
+
+    cols += '<td><input type="text" th:value="${menu.nama}" name="nama" /></td>';
+    cols += '<td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>';
+    cols += '<td><input type="number" th:value="${menu.harga}" name="harga" /></td>';
+    cols += '<td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>';
+
+    cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+    newRow.append(cols);
+    $("table.order-list").append(newRow);
+    counter++;
+    });
+
+
+    $("table.order-list").on("click", ".ibtnDel", function (event) {
+    $(this).closest("tr").remove();
+    counter -= 1
+    });
+
+
+    });
+</script>
 </html>
