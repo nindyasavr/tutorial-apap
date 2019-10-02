@@ -15,38 +15,106 @@
 
 
 <div class="container">
-    <form action="#" th:action="@{/menu/add}" th:object="${menu}" method="POST">
-        <input type="submit" th:value="submit">
-        <input type="hidden" th:field="*{restoran}" />
+<form action="#" th:action="@{/menu/add}" th:object="${restoran}" method="POST">
+    <button type="submit" >Submit</button>
     <table id="myTable" class="table order-list">
         <thead>
-        <tr>
-            <th>Nama Menu</th>
-            <th>Deskripsi</th>
-            <th>Harga</th>
-            <th>Durasi Masak(Menit)</th>
-            <th>Action</th>
-            <th><input type="button" class="btn btn-lg btn-block btn-primary" id="addrow" value="Add row"></th>
-        </tr>
+            <tr>
+                <th>Nama Menu</th>
+                <th>Deskripsi</th>
+                <th>Harga</th>
+                <th>Durasi Masak(Menit)</th>
+                <th>Action</th>
+                <th><input type="button" class="btn btn-lg btn-block btn-primary" id="addrow" value="Add row"></th>
+            </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="text" th:value="${menu.nama}" name="nama" /></td>
-            <td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>
-            <td><input type="number" th:value="${menu.harga}" name="harga" /></td>
-            <td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>
-            <td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>
-<!--            <td><a class="deleteRow"></a></td>-->
-        </tr>
+            <tr>
+                <input type="hidden" th:field="*{restoran}" />
+                    <td> <input type="text" name="nama"></td>
+                    <td> <input type="number" name="harga"></td>
+                    <td> <input type="text" name="deskripsi"></td>
+                    <td> <input type="text" name="durasiMasak"></td>
+                    <td>
+                        <input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete" th:field="*{listMenu}" th:value="${menu}"/>
+                    </td>
+                </tr>
+            </tr>
         </tbody>
-        <tfoot>
-        <tr></tr>
-        <tr>
-        </tr>
-        </tfoot>
     </table>
 </form>
 </div>
+
+
+
+<!--    <form th:action="/menu/add/' + ${restoran.idRestoran}} th:object="${restoran}" method="POST">-->
+<!--        <input type="hidden" th:field="*{restoran}" />-->
+<!--        <table border="1">-->
+<!--            <thead>-->
+<!--            <tr>-->
+<!--                <th>Nama Menu</th>-->
+<!--                <th>Deskripsi</th>-->
+<!--                <th>Harga</th>-->
+<!--                <th>Durasi Masak(Menit)</th>-->
+<!--                <th><button type="submit" name="addRow">Add Row</button> </th>-->
+<!--            </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            <tr th:each="menu, status : *{menus}">-->
+<!--                <td><input type="text" th:field="*{menus[__${status.index}__].nama}" name="nama" /></td>-->
+<!--                <td><input type="text" th:field="*{menus[__${status.index}__].deskripsi}" name="deskripsi" /></td>-->
+<!--                <td><input type="number" th:field="*{menus[__${status.index}__].harga}" name="harga" /></td>-->
+<!--                <td><input type="number" th:field="*{menus[__${status.index}__].durasiMasak}" name="durasiMasak" /></td>-->
+<!--                <td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>-->
+<!--                <td>-->
+<!--                    <button type="submit" name="removeRow" th:value="${status.index}">Remove row</button>-->
+<!--                </td>-->
+<!--            </tbody>-->
+<!--        </table>-->
+<!--        <button type="submit" name="save">Submit</button>-->
+<!--    </form>-->
+
+
+<!--    <button>BATASSS IMAM</button>-->
+
+
+
+<!--    <form action="#" th:action="@{/menu/add}" th:object="${menu}" method="POST">-->
+<!--        <input type="submit" th:value="submit">-->
+<!--        <input type="hidden" th:field="*{restoran}" />-->
+<!--    <table id="myTable" class="table order-list">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th>Nama Menu</th>-->
+<!--            <th>Deskripsi</th>-->
+<!--            <th>Harga</th>-->
+<!--            <th>Durasi Masak(Menit)</th>-->
+<!--            <th>Action</th>-->
+<!--            <th><input type="button" class="btn btn-lg btn-block btn-primary" id="addrow" value="Add row"></th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="menu, status : *{menus}">-->
+
+
+<!--            <td><input type="text" th:value="${menu.nama}" name="nama" /></td>-->
+<!--            <td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>-->
+<!--            <td><input type="number" th:value="${menu.harga}" name="harga" /></td>-->
+<!--            <td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>-->
+<!--            <td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>-->
+
+
+            <!--            <td><a class="deleteRow"></a></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--        <tfoot>-->
+<!--        <tr></tr>-->
+<!--        <tr>-->
+<!--        </tr>-->
+<!--        </tfoot>-->
+<!--    </table>-->
+<!--</form>-->
+<!--</div>-->
 
 <!--<table class="table table-striped" id="myTable">-->
 <!--<tr th:each="menu, iterationStatus : *{listMenu}">-->
@@ -82,12 +150,12 @@ $("#addrow").on("click", function () {
 var newRow = $("<tr>");
     var cols = "";
 
-    cols += '<td><input type="text" th:value="${menu.nama}" name="nama" /></td>';
-    cols += '<td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>';
-    cols += '<td><input type="number" th:value="${menu.harga}" name="harga" /></td>';
-    cols += '<td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>';
+    cols += '<td> <input type="text" name="nama"></td>';
+    cols += '<td> <input type="number" name="harga"></td>';
+    cols += '<td> <input type="text" name="deskripsi"></td>';
+    cols += '<td> <input type="text" name="durasiMasak"></td>';
 
-    cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
+    cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger " value="Delete" th:field="*{listMenu}" th:value="${menu}"/></td>';
     newRow.append(cols);
     $("table.order-list").append(newRow);
     counter++;
