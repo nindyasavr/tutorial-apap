@@ -18,7 +18,8 @@
     <h2> Daftar Menu: </h2>
     <div th:each="menu : ${menuList}">
         <h3 th:text="'Nama: ' + ${menu.nama}"> </h3>
-        <h3 th:text="'Harga: ' + ${menu.harga}"> </h3>
+        <h3 th:text="'Harga: ' + ${menu.harga} >= 10000">Diatas 10k </h3>
+        <h3 th:text="'Harga: ' + ${menu.harga} <= 10000">Dibawah 10k </h3>
         <h3 th:text="'Deskripsi: ' + ${menu.deskripsi}"> </h3>
         <h3 th:text="'Durasi Penyajian: ' + ${menu.durasiMasak}"> </h3>
         </br>
