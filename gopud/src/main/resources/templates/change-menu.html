@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeLeaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title> Change Menu </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
@@ -8,7 +8,7 @@
 </head>
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(content='Change Menu')"></nav>
 <h2 th:text="'Menu ' + ${menu.nama} + ' berhasil diubah.'"></h2>
 </body>
 </html>

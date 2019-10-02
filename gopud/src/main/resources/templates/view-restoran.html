@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>View Restoran</title>
@@ -8,7 +8,7 @@
 
 </head>
 <body>
-<nav th:replace="fragments/fragment :: navbar"></nav>
+<nav th:replace="fragments/fragment :: navbar(content='View Restoran')"></nav>
 <div class="container-fluid">
     <h2>Informasi Restoran</h2>
     <h3 th:text="'ID Restoran: ' + ${resto.idRestoran}"></h3>
@@ -30,23 +30,23 @@
         <table>
             <thead>
             <tr>
-                <th>No</th>
-                <th>Nama</th>
-                <th>Harga</th>
-                <th>Deskripsi</th>
-                <th>Durasi Penyajian</th>
-                <th>Aksi</th>
+                <th class="col-sm-2">No</th>
+                <th class="col-sm-2">Nama</th>
+                <th class="col-sm-2">Harga</th>
+                <th class="col-sm-2">Deskripsi</th>
+                <th class="col-sm-2">Durasi Penyajian</th>
+                <th class="col-sm-2">Aksi</th>
             </tr>
             </thead>
             <tbody>
                 <tr th:each="menu, iterationStatus : *{listMenu}"
                     th:style="${iterationStatus.even} ? 'color: blue'">
-                    <td th:text="${iterationStatus.count}"></td>
-                    <td th:text="${menu.nama}"></td>
-                    <td th:text="${menu.harga} >= 10000 ? 'diatas 10k' : 'dibawah 10k'"></td>
-                    <td th:text="${menu.deskripsi}"></td>
-                    <td th:text="${menu.durasiMasak}"></td>
-                    <td>
+                    <td class="col-sm-2" th:text="${iterationStatus.count}"></td>
+                    <td class="col-sm-2" th:text="${menu.nama}"></td>
+                    <td class="col-sm-2" th:text="${menu.harga} >= 10000 ? 'diatas 10k' : 'dibawah 10k'"></td>
+                    <td class="col-sm-2" th:text="${menu.deskripsi}"></td>
+                    <td class="col-sm-2" th:text="${menu.durasiMasak}"></td>
+                    <td class="col-sm-2">
                         <input type="checkbox" th:field="*{listMenu}" th:value="${menu.id}"/>
                         <label th:for="${#ids.prev('listMenu')}">Hapus</label>
                     </td>
