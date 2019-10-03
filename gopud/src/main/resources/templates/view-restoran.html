@@ -27,26 +27,26 @@
 
     <h2> Daftar Menu: </h2>
     <form th:action="@{/menu/delete}" th:object="${resto}" method="POST">
-        <table>
+        <table id="myTable" class="table order-list">
             <thead>
             <tr>
-                <th class="col-sm-2">No</th>
-                <th class="col-sm-2">Nama</th>
-                <th class="col-sm-2">Harga</th>
-                <th class="col-sm-2">Deskripsi</th>
-                <th class="col-sm-2">Durasi Penyajian</th>
-                <th class="col-sm-2">Aksi</th>
+                <th>No</th>
+                <th>Nama</th>
+                <th>Harga</th>
+                <th>Deskripsi</th>
+                <th>Durasi Penyajian</th>
+                <th>Aksi</th>
             </tr>
             </thead>
             <tbody>
                 <tr th:each="menu, iterationStatus : *{listMenu}"
                     th:style="${iterationStatus.even} ? 'color: blue'">
-                    <td class="col-sm-2" th:text="${iterationStatus.count}"></td>
-                    <td class="col-sm-2" th:text="${menu.nama}"></td>
-                    <td class="col-sm-2" th:text="${menu.harga} >= 10000 ? 'diatas 10k' : 'dibawah 10k'"></td>
-                    <td class="col-sm-2" th:text="${menu.deskripsi}"></td>
-                    <td class="col-sm-2" th:text="${menu.durasiMasak}"></td>
-                    <td class="col-sm-2">
+                    <td th:text="${iterationStatus.count}"></td>
+                    <td th:text="${menu.nama}"></td>
+                    <td th:text="${menu.harga} >= 10000 ? 'diatas 10k' : 'dibawah 10k'"></td>
+                    <td th:text="${menu.deskripsi}"></td>
+                    <td th:text="${menu.durasiMasak}"></td>
+                    <td>
                         <input type="checkbox" th:field="*{listMenu}" th:value="${menu.id}"/>
                         <label th:for="${#ids.prev('listMenu')}">Hapus</label>
                     </td>
