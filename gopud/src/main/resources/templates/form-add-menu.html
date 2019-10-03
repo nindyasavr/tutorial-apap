@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title> Add Menu </title>
     <object th:include="fragments/fragment :: css" th:remove="tag"></object>
@@ -15,9 +15,10 @@
 
 
 <div class="container">
-    <form action="#" th:action="@{/menu/add}" th:object="${menu}" method="POST">
-        <input type="submit" th:value="submit">
-        <input type="hidden" th:field="*{restoran}" />
+    <form action="#" th:action="@{/menu/add}" th:object="${restoran}" method="POST">
+<!--        <input type="submit" th:value="submit">-->
+        <button type="submit" name="save" class="btn btn-primary">Submit</button>
+        <input type="hidden" th:field="*{idRestoran}" />
     <table id="myTable" class="table order-list">
         <thead>
         <tr>
@@ -30,11 +31,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><input type="text" th:value="${menu.nama}" name="nama" /></td>
-            <td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>
-            <td><input type="number" th:value="${menu.harga}" name="harga" /></td>
-            <td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>
+        <tr th:each="menu, status : *{listMenu}">
+            <td><input type="text" th:field="*{listMenu[__${status.index}__].nama}" name="nama" /></td>
+            <td><input type="text" th:field="*{listMenu[__${status.index}__].deskripsi}" name="deskripsi" /></td>
+            <td><input type="number" th:field="*{listMenu[__${status.index}__].harga}" name="harga" /></td>
+            <td><input type="number" th:field="*{listMenu[__${status.index}__].durasiMasak}" name="durasiMasak" /></td>
             <td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>
 <!--            <td><a class="deleteRow"></a></td>-->
         </tr>
@@ -82,10 +83,10 @@ $("#addrow").on("click", function () {
 var newRow = $("<tr>");
     var cols = "";
 
-    cols += '<td><input type="text" th:value="${menu.nama}" name="nama" /></td>';
-    cols += '<td><input type="text" th:value="${menu.deskripsi}" name="deskripsi" /></td>';
-    cols += '<td><input type="number" th:value="${menu.harga}" name="harga" /></td>';
-    cols += '<td><input type="number" th:value="${menu.durasiMasak}" name="durasiMasak" /></td>';
+    cols += '<td><input type="text" th:field="*{listMenu[__${status.index}__].nama}" name="nama" /></td>'
+    cols += '<td><input type="text" th:field="*{listMenu[__${status.index}__].deskripsi}" name="deskripsi" /></td>'
+    cols += '<td><input type="number" th:field="*{listMenu[__${status.index}__].harga}" name="harga" /></td>'
+    cols += '<td><input type="number" th:field="*{listMenu[__${status.index}__].durasiMasak}" name="durasiMasak" /></td>'
 
     cols += '<td><input type="button" class="ibtnDel btn btn-md btn-danger "  value="Delete"></td>';
     newRow.append(cols);

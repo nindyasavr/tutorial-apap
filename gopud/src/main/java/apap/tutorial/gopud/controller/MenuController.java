@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -26,22 +27,22 @@ public class MenuController {
     @Autowired
     RestoranService restoranService;
 
-    @RequestMapping(value = "/menu/add/{idRestoran}", method = RequestMethod.GET)
-    private String addProductFormPage(@PathVariable(value = "idRestoran") Long idRestoran, Model model) {
-        MenuModel menu = new MenuModel();
-        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
-        menu.setRestoran(restoran);
-        model.addAttribute("menu", menu);
-        return "form-add-menu";
-    }
-
-    @RequestMapping(value = "menu/add", method = RequestMethod.POST)
-    private String addProductSubmit(@ModelAttribute MenuModel menu, Model model) {
-        menuService.addMenu(menu);
-        model.addAttribute("nama", menu.getNama());
-
-        return "add-menu";
-    }
+//    @RequestMapping(value = "/menu/add/{idRestoran}", method = RequestMethod.GET)
+//    private String addProductFormPage(@PathVariable(value = "idRestoran") Long idRestoran, Model model) {
+//        MenuModel menu = new MenuModel();
+//        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+//        menu.setRestoran(restoran);
+//        model.addAttribute("menu", menu);
+//        return "form-add-menu";
+//    }
+//
+//    @RequestMapping(value = "menu/add", method = RequestMethod.POST)
+//    private String addProductSubmit(@ModelAttribute MenuModel menu, Model model) {
+//        menuService.addMenu(menu);
+//        model.addAttribute("nama", menu.getNama());
+//
+//        return "add-menu";
+//    }
 
     @RequestMapping(value = "/menu/delete", method = RequestMethod.POST)
     private String deleteMenu(
@@ -65,6 +66,28 @@ public class MenuController {
         model.addAttribute("menu", newMenu);
         return "change-menu";
     }
+
+    @RequestMapping(value = "menu/add/{idRestoran}", method = RequestMethod.GET)
+    public String add(@PathVariable("idRestoran") Long idRestoran, Model model) {
+        RestoranModel restoran = restoranService.getRestoranByIdRestoran(idRestoran).get();
+        ArrayList<MenuModel> menuList = new ArrayList<>();
+        restoran.setListMenu(menuList);
+        menuList.add(new MenuModel());
+        model.addAttribute("restoran", restoran);
+        return "form-add-menu";
+    }
+
+    @RequestMapping(value = "/menu/add", method = RequestMethod.POST)
+    public String addProductSubmit(@ModelAttribute RestoranModel restoran, Model model){
+        RestoranModel target = restoranService.getRestoranByIdRestoran(restoran.getIdRestoran()).get();
+        for (MenuModel addedMenu : restoran.getListMenu()) {
+            addedMenu.setRestoran(target);
+            menuService.addMenu(addedMenu);
+        }
+        model.addAttribute("listMenu", target);
+        return "add-menu";
+    }
+    
 
 
 
