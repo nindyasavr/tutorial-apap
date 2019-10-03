@@ -120,6 +120,7 @@ Proses saya menemukan nomor 2 adalah dengan membrowsing kasus yang sama kemudian
 
 2. Jelaskan yang anda pelajari dari latihan nomor 3, dan jelaskan tahapan bagaimana anda
 menyelesaikan latihan nomor 3
+yang saya pelajari adalah bagaimana membuat sebuah form yang dapat menerima multiple object dengan memanfaatkan binding result. proses dalam memecahkan nomor 3 cukup panjang dengan melakukan browsing berbagai sumber kemudian bertanya kepada yang ahli mulai pertama mendapatkan cara menggunakan javascript namun hanya tersbumit object paling atas kemudian baru menemukan cara menggunakan binding result
 
 3. Jelaskan perbedaan th:include dan th:replace
 th:include adalah metode yang digunakan jika ingin menambahkan satu atau lebih object ke dalam file baru seperti menambahkan file js dan css yang banyak 
