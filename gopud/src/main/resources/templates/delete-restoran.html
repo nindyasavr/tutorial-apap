@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Delete Restoran</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+
 </head>
 <body>
+<nav th:replace="fragments/fragment :: navbar(content='Delete Restoran')"></nav>
 <h2>Delete Berhasil!</h2>
 <h3 th:text="'Restoran ' + ${resto.nama} + ' berhasil dihapus'"></h3>
 </body>
