@@ -1,5 +1,6 @@
 package apap.tutorial.gopud.controller;
 
+import apap.tutorial.gopud.model.MenuModel;
 import apap.tutorial.gopud.model.RestoranModel;
 import apap.tutorial.gopud.service.MenuService;
 import apap.tutorial.gopud.service.RestoranService;
@@ -104,5 +105,19 @@ public class RestoranControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("add-restoran"))
                 .andExpect(model().attribute("namaResto", is(nama)));
+    }
+
+    @Test
+    public void whenViewRestoranAccessItShouldShowRestoranData() throws Exception {
+        RestoranModel dummyRestoranModel = generateDummyRestoranModel(1);
+        when(restoranService.getRestoranByIdRestoran(1L)).thenReturn(Optional.of(dummyRestoranModel));
+        mockMvc.perform(get("/restoran/view?idRestoran=1"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(content().string(Matchers.containsString("Informasi Restoran")))
+                .andExpect(model().attribute("resto", is(dummyRestoranModel)))
+                .andExpect(model().attribute("resto", hasProperty("nama")))
+                .andExpect(model().attribute("resto", hasProperty("alamat")))
+                .andExpect(model().attribute("listMenu", is(dummyRestoranModel.getListMenu())));
+        verify(restoranService, times(1)).getRestoranByIdRestoran(1L);
     }
 }

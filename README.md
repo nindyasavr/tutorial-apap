@@ -128,3 +128,24 @@ th:replace adalah metode yang digunakan jika ingin mengubah salah satu elemen ya
 
 4. Jelaskan bagaimana penggunaan th:object beserta tujuannya
 th:object berguna untuk menyimpan suatu object kedalam thymeleaf setelah dilakukan submit form
+
+
+----------------------------------------------------------------------------------------------------
+## Tutorial 5
+1. Jelaskan bagian mana saja dari test yang dibuat pada latihan no 2 adalah given, when, dan and
+then.
+given : ketika pembuatan inisiasi restoranModel dilakukan hingga when
+when : kondisi saat cek attribut dari model melakukan andExcpect 
+andThen : ketika melakukan verify 
+
+2. Jelaskan perbedaan line coverage dan logic coverage.
+logic coverage : melakukan testing terhadap conditional expression atau logical operator dalam code
+line coverage : testing terhadap statement di setiap baris didalam code 
+
+3. Pada keadaan ideal, apa yang seharusnya dibuat terlebih dahulu, code atau unit test? Mengapa
+seperti itu? Apa akibatnya jika urutannya dibalik, adakah risiko tak terlihat yang mungkin
+terjadi?
+idealnya unit test dibuat terlebih dahulu mengikuti prinsip tdd(test driven development). jika urutannya dibalik terdapat risiko yang terjadi seperti:
+-over-engineering : keadaan dimana kita menyadari bahwa code yang kita tulis terlalu rumit dan kompleks padahal bisa disederhanakan
+-Penyesuaian code : code yang sudah ditulis susah untuk di test sehingga perlu dilakukan refactor agar dapat dilakukan test
+-no test : karena code sudah berhasil digunakan maka membuat kita jadi malas untuk melakukan testing sehingga sulit untuk mencari bug
