@@ -149,3 +149,16 @@ idealnya unit test dibuat terlebih dahulu mengikuti prinsip tdd(test driven deve
 -over-engineering : keadaan dimana kita menyadari bahwa code yang kita tulis terlalu rumit dan kompleks padahal bisa disederhanakan
 -Penyesuaian code : code yang sudah ditulis susah untuk di test sehingga perlu dilakukan refactor agar dapat dilakukan test
 -no test : karena code sudah berhasil digunakan maka membuat kita jadi malas untuk melakukan testing sehingga sulit untuk mencari bug
+
+-----------------------------------------------------------------------------------------------------
+## Tutorial 6
+1. Apa itu postman? Apa kegunaan dari postman?
+Postman merupakan aplikasi yang berjalan sebagai client dan digunakan untuk melakukan uji coba REST API 
+
+
+2. Apa kegunaan dari annotation @JsonIgnoreProperties?
+Anotasi ini berguna untuk menekan serialisasi properti atau mengabaikan pemrosesan properti JSON yang dibaca (saat deserialisasi) 
+
+
+3. Apa itu ResponseEntity dan apa kegunaannya?
+ResponseEntity merupakan representasi dari respons HTTP yang berupa kode status, header dan body. Response ini digunakan untuk mengkonfigurasi seluruh respons HTTP
