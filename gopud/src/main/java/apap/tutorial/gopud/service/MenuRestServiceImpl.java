@@ -25,6 +25,7 @@ public class MenuRestServiceImpl implements MenuRestService {
     MenuDb menuDb;
     private final WebClient webClient;
 
+
     @Override
     public MenuModel createMenu(MenuModel menu) {
         return menuDb.save(menu);
@@ -57,6 +58,7 @@ public class MenuRestServiceImpl implements MenuRestService {
         menuDb.delete(deletedMenu);
     }
 
+
     @Override
     public Mono<String> getExclude(String ingredients) {
         return this.webClient.get().uri(Setting.recipeUrl + ingredients + "&apiKey=a2290f9163f646b4ad327daaaff439e4")
@@ -79,4 +81,5 @@ public class MenuRestServiceImpl implements MenuRestService {
 //        data.add("spesialis", "menuPastry");
 //        return this.webClient.post().uri("/restoran/chef/nama").syncBody(data).retrieve().bodyToMono(Setting.menuUrl);
 //    }
+
 }

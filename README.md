@@ -161,9 +161,9 @@ Anotasi ini berguna untuk menekan serialisasi properti atau mengabaikan pemroses
 
 
 3. Apa itu ResponseEntity dan apa kegunaannya?
+
 ResponseEntity merupakan representasi dari respons HTTP yang berupa kode status, header dan body. Response ini digunakan untuk mengkonfigurasi seluruh respons HTTP
 
-------------------------------------------------------------------------------------------------------
 ## Tutorial 7
 1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
 yang telah anda buat) konsep tersebut diimplementasi?
@@ -190,3 +190,4 @@ padahal kita sudah memiliki class UserRoleServiceImpl.java?
 UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam class ini dilakukan extends terhadap UserServiceDetail dari spring security.
 Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db dan juga memberikan otorisasi
 yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan user
+
