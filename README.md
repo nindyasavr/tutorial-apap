@@ -162,3 +162,31 @@ Anotasi ini berguna untuk menekan serialisasi properti atau mengabaikan pemroses
 
 3. Apa itu ResponseEntity dan apa kegunaannya?
 ResponseEntity merupakan representasi dari respons HTTP yang berupa kode status, header dan body. Response ini digunakan untuk mengkonfigurasi seluruh respons HTTP
+
+------------------------------------------------------------------------------------------------------
+## Tutorial 7
+1. Jelaskan secara singkat perbedaan Otentikasi dan Otorisasi! Di bagian mana (dalam kode
+yang telah anda buat) konsep tersebut diimplementasi?
+Otentikasi melakukan validasi apakah username dan password sudah sesuai dengan yang telah tersimpan di database
+otentikasi dilakukan ketika user melakukan login dan melihat apakah username dan passwordnya match. jika tidak 
+maka otentikasi tidak akan diberikan atau gagal log in
+Otorisasi adalah proses menentukan akses apa yang dapat diberikan kepada user. Implementasi ini dilakukan ketika
+penambahan user hanya bisa dilakukan oleh admin karena user dan merchant tidak memiliki otorisasi terhadap penambahan user.
+
+2. Apa itu BCryptPasswordEncoder? Jelaskan secara singkat cara kerjanya!
+BCryptPasswordEncoder adalah tool yang berguna untuk melakukan encoding password yang didapatkan dari Spring security.
+BCryptPasswordEncoder ini memanfaatkan hashing agar tidak menyimpan password dalam bentuk yang asli. Cara kerjanya adalah 
+dengan membuat sebuah objek BCryptPasswordEncoder yang akan memanggil method encode dan method tersebut akan melakukan
+encoding terhadap password yang dimiliki user
+
+3. Jelaskan secara singkat apa itu UUID dan mengapa kita memakai UUID di UserModel.java?
+UUID adalah kumpulan dari 32 karakter yang berbentuk string dan dibuat secara acak dengan teknik khusus yang digunakan untuk
+menjamin keunikan pada setiap data. UUID memiliki keunikan yang tinggi karena di setiap melakukan generate yang menggunakan UUID
+dapat dijamin akan menghasilkan 1000 UUID yang berbeda. UUID berguna untuk keamanan password yang dimiliki user karena akan sulit 
+mengacak password yang telah di enkripsi menggunakan UUID. 
+
+4. Apa kegunaan class UserDetailsServiceImpl.java? Mengapa harus ada class tersebut
+padahal kita sudah memiliki class UserRoleServiceImpl.java?
+UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam class ini dilakukan extends terhadap UserServiceDetail dari spring security.
+Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db dan juga memberikan otorisasi
+yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan user
