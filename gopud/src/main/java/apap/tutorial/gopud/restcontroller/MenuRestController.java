@@ -72,6 +72,7 @@ public class MenuRestController {
         return menuRestService.retrieveListMenu();
     }
 
+
     @GetMapping(value = "/recipe/excludeIngredients={ingredient}")
     private Mono<String> searchExclude(@PathVariable String ingredient){
         return menuRestService.getExclude(ingredient);
