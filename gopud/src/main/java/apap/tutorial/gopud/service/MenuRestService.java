@@ -9,4 +9,7 @@ public interface MenuRestService {
     MenuModel getMenuByIdMenu(Long idMenu);
     List<MenuModel> retrieveListMenu();
     void deleteMenu(Long idMenu);
+    Mono<String> getExclude(String ingredients);
+    Mono<String> getChef(String namaChef);
+
 }
