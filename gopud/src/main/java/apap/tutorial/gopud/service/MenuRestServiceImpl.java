@@ -26,7 +26,7 @@ public class MenuRestServiceImpl implements MenuRestService {
     @Autowired
     MenuDb menuDb;
     private final WebClient webClient;
-    
+
     @Override
     public MenuModel createMenu(MenuModel menu) {
         return menuDb.save(menu);
