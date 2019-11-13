@@ -191,3 +191,50 @@ UserDetailsServiceImpl.java berguna untuk membangun autentikasi user. didalam cl
 Class ini akan menghasilkan UserDetail object yang akan memberikan informasi terkait user yang terdapat dari db dan juga memberikan otorisasi
 yang dimiliki user sesuai dengan role yang dimiliki. Sedangkan UserServiceImpl digunakan untuk mengatur mapping yang dilakukan user
 
+
+-------------------------------------------------------------------------------
+### Tutorial 8
+1. Hilangkan checkbox pada item di list bagian kiri. Gunakan approach terbaik menurut Anda.
+Anda hanya tidak diperbolehkan untuk membuat component Item baru.
+==> Yang saya lakukan pertama-tama adalah menambahkan parameter untuk variabel boolean di dalam item.js yang menyimpan
+variabel apakah checkbox perlu di hide atau di display. variabel tersebut juga ditambahkan di List.js
+karena List.js mengakses item juga. kemudian ketika ingin di display, list untuk seluruh data booleannya di false
+sehingga checkboxnya akan disembunyikan. berikut lampiran bukti pengerjaan saya
+https://ibb.co/z2cPnyR
+https://ibb.co/PjS09Pn
+https://ibb.co/pr3WjyH
+
+2. Jika kalian memilih item dari bagian kiri dan item dengan ID yang sama sudah ditambahkan
+sebelumnya, maka item tersebut terhapus dari bagian kanan. Buatlah mekanisme agar bagian
+kiri hanya melakukan operasi add. Berikut adalah ilustrasi behavior sekarang
+==> secara garis besar hampir sama dengan nomor 1, menambahkan sebuah parameter boolean.
+parameter isDelete ini melakukan pengecekan ketika card di sebelah kiri di klik, maka boolean
+akan menjadi false sehingga tidak dapat menghapus dengan mengklik bagian kanan.
+kemudian di dalam function handleItemClick(item, isDelete) ditambahkan parameter dan juga
+melakukan conditional jika boolean true maka card dapat di delete dari favorit. 
+jika conditionnya false, maka card di sebelah kanan tidak dapat dihapus jika masih berada di my fav
+berikut adalah lampiran foto code
+https://ibb.co/chvYt4x
+https://ibb.co/JdQXCJr
+https://ibb.co/fHhTnYz
+
+3. Buatlah toggle dimana jika toggle ON, maka My Favorite ditampilkan. Jika toggle OFF, maka
+sembunyikan. Tata letak toggle tidak harus sama.
+Pertama membuat input checkbox dan ditandai dengan parameter checked di app.js atau appfunc.js. 
+kemudian membuat constanta yang dapat mengubah parameter boolean yang diberikan. Kemudian juga
+function displayFavorit di dalam appFunc.js. function ini pertama melakukan conditional apakah
+size list favorit ada atau tidak jika tidak seperti di nomor 4. jika ya maka akan melakukan 
+penambahan ke daftar favorit biasa.
+Berikut merupakan lampiran source code 
+https://ibb.co/qynXxRr
+https://ibb.co/ccFCVx7
+https://ibb.co/H7sjsNP
+
+4. Jika daftar favorit kosong, maka tampilkan empty state. Hint: buat component bernama
+EmptyState.
+Pertama-tama membuat file emptyState dan menuliskan pesan yang ingin disampaikan. 
+kemudian, didalam app.js ataupun appfunc.js ditambahkan conditional apabila panjang list
+favorit masih null, maka munculkan pesan dari empty State
+Berikut merupakan lampira coding mengenai emptyState
+https://ibb.co/jffwdgX
+https://ibb.co/C5XXdrs
