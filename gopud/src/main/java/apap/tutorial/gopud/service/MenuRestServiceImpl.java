@@ -25,10 +25,8 @@ public class MenuRestServiceImpl implements MenuRestService {
 
     @Autowired
     MenuDb menuDb;
-
     private final WebClient webClient;
-
-
+    
     @Override
     public MenuModel createMenu(MenuModel menu) {
         return menuDb.save(menu);
@@ -83,4 +81,5 @@ public class MenuRestServiceImpl implements MenuRestService {
 //        data.add("spesialis", "menuPastry");
 //        return this.webClient.post().uri("/restoran/chef/nama").syncBody(data).retrieve().bodyToMono(Setting.menuUrl);
 //    }
+
 }
