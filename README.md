@@ -249,6 +249,9 @@ kemudian saya definisikan kapan fungsi ini akan dipanggil yaitu ketika restoran 
 untuk itu, saya panggil function ini di function addRestoranHandler
 
 2. Jelaskan fungsi dari async dan await!
+async adalah sebuah function yang digunakan untuk mengembalikan atau return variable yang dihandle oleh 
+fungsi yang asynchronous. fungsi async biasa diikuti oleh fungsi await. dimana await sendiri berguna untuk
+memberhentikan sementara fungsi yang sedang dieksekusi oleh fungsi async dan kemudian akan lanjut kembali.
 
 
 3. Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada
@@ -260,3 +263,8 @@ componentDidUpdate, componentWillReceiveProps,
 componentWillUnmount.
 Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
 yang biasanya menggunakan lifecycle method tersebut”
+componentDidMount -> fungsi yang dijalankan apabila sebuah komponen sedang dijalankan atau sedang muncul.
+shouldComponentUpdate -> fungsi yang dijalankan ketika sebuah komponen akan melakukan update
+componentDidUpdate -> adalah fungsi yang akan dijalankan setelah sebuah komponen melakukan update
+componentWillReceiveProps -> fungsi yang dipanggil ketika sebuah komponen akan menerima sebuah props
+componentWillUnmount -> fungsi yang dipanggil ketika sebuah komponen akan menghilang
