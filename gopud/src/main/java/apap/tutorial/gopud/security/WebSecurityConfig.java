@@ -20,16 +20,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http
+                .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/js/**").permitAll()
-                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT")
-                .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
+                .antMatchers("/api/v1/**").permitAll()
+//                .antMatchers("/restoran/**").hasAnyAuthority("MERCHANT")
+//                .antMatchers("/user/addUser").hasAnyAuthority("ADMIN")
+//                .anyRequest().authenticated()
                 .and().formLogin()
                 .loginPage("/login").permitAll()
                 .and()
-                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll();
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login").permitAll()
+                .and()
+                .cors();
     }
     @Bean
     public BCryptPasswordEncoder encoder() {

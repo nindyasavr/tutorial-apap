@@ -238,3 +238,33 @@ favorit masih null, maka munculkan pesan dari empty State
 Berikut merupakan lampira coding mengenai emptyState
 https://ibb.co/jffwdgX
 https://ibb.co/C5XXdrs
+
+-----------------------------------------------------------------------------
+### Tutorial 9
+1. Ceritakan langkah - langkah yang kalian lakukan untuk solve LATIHAN no.1, dan
+mengapa kalian melakukan langkah - langkah tersebut?
+Pertama-tama setelah fitur add berhasil, saya menambahkan sebuah function bernama resetValue().
+function ini menyimpan state yang berisi null sehingga akan mereset value yang tadinya sudah ada di state.
+kemudian saya definisikan kapan fungsi ini akan dipanggil yaitu ketika restoran sudah berhasil di add.
+untuk itu, saya panggil function ini di function addRestoranHandler
+
+2. Jelaskan fungsi dari async dan await!
+async adalah sebuah function yang digunakan untuk mengembalikan atau return variable yang dihandle oleh 
+fungsi yang asynchronous. fungsi async biasa diikuti oleh fungsi await. dimana await sendiri berguna untuk
+memberhentikan sementara fungsi yang sedang dieksekusi oleh fungsi async dan kemudian akan lanjut kembali.
+
+
+3. Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada
+pertanyaan ini.
+
+
+4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
+componentDidUpdate, componentWillReceiveProps,
+componentWillUnmount.
+Notes : Penjelasan harus mencantumkan “kapan fungsi dipanggil” dan “use case apa saja
+yang biasanya menggunakan lifecycle method tersebut”
+componentDidMount -> fungsi yang dijalankan apabila sebuah komponen sedang dijalankan atau sedang muncul.
+shouldComponentUpdate -> fungsi yang dijalankan ketika sebuah komponen akan melakukan update
+componentDidUpdate -> adalah fungsi yang akan dijalankan setelah sebuah komponen melakukan update
+componentWillReceiveProps -> fungsi yang dipanggil ketika sebuah komponen akan menerima sebuah props
+componentWillUnmount -> fungsi yang dipanggil ketika sebuah komponen akan menghilang
