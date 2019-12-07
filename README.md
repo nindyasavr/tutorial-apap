@@ -256,7 +256,9 @@ memberhentikan sementara fungsi yang sedang dieksekusi oleh fungsi async dan kem
 
 3. Masukkan jawaban dari TODO (Screenshot) pada Component Lifecycle pada
 pertanyaan ini.
-
+https://ibb.co/5c9mxCP
+https://ibb.co/GtLgh2z
+https://ibb.co/LYTHqDL
 
 4. Jelaskan fungsi dari componentDidMount, shouldComponentUpdate,
 componentDidUpdate, componentWillReceiveProps,
